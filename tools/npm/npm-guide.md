@@ -2,141 +2,77 @@
 
 ### What is npm?
 
-**npm** is the **node package manager** that makes it easy for JavaScript developers to share the code that they've created to solve particular problems, and for other developers to reuse that code in their own applications.
+**npm** stands for **Node Package Manager** and helps developers to install and manage the tools (or packages) in Node.js by providing a useful command line interface.
 
-Simply, it allows JavaScript developers to manage **node** packages without doing it manually. In particular they can **specify** all project **dependancies** which can be retrieved easily by any other developer through [package.json](#installing-npm) and it also means **managing** project [versioning](#install-a-package-locally) and prevent updates from breaking their project.
+### What is a Node package?
 
-### What are node packages?
+A Node package is a library of code that implements a functionality and developers want to import and use within a project.
 
-Node package is a package (source code) that implements a functionality and can be imported and used in a project.
+### Where can i get the Node packages from?
 
-### Where can i find the node packages?
-
-**npm** allows you to install node packages from [Registry](https://www.npmjs.com/). These are open source packages. Since they are open source is best practice to check the **Stats** and **stars** in **GitHub** before using them.
-
-# Commands
+Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open source and free developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to understand how useful is a library before using it.
 
 ### Installing npm
 
-**npm** is installed as part of the **node.js**
+npm is installed along with [NodeJS](https://www.nodejs.com/) installation
 
-Check **npm** version
+# package.json
+
+# Commands
+
+### Check tool version
+
+**npm** version
 
 ```sh
 npm -v
 ```
 
-Check **node** version
+**node** version
 
 ```sh
 node -v
 ```
 
-### Initialialize project with npm
+### Initialialize project
 
 ```sh
 npm init
 ```
-A process will be started that will create **package.json** file in your current folder. A questionary command line is initiated where at least **name** and **version** should be provided.
+Starts a process that will create **package.json** file in your current folder. While initializing a questionary command line will be initiated where at least **name** and **version** of the project should be provided.
 
-A **package.json** file serves as documentation for what packages your project depends on. It also allows you to specify the versions of a package that your project can use using [semantic versioning rules](http://semver.org/).
+### Installation
 
-### Install a package locally
-
-Install the [dependencies and devDependencies](#example-b) that read from **package.json** in your current folder.
+Install [all project packages](#example-b) as listed in package.json file.
 
 ```sh
 npm install
 ```
 
-In Production there is a flag that installs only **dependencies**.
-
-```sh
-npm install -production
-```
-
-A package can be downloaded with the command
+Install single package
 
 ```sh
 npm install <package_name>
 ```
-This will create the **node_modules** directory in your current directory(if one doesn't exist yet), and will download the package to that directory.
-
-##### Example A - Install globally
-
-```sh
-npm install react-native-cli -g
-```
-
-**npm** will install package **react-native-cli** as a computer program. The package is stored in a global path on your system.
-
-* **-g** flag: global install flag, if used **react-native-cli** package can run from any path
-
-##### Example B - Install locally
-
-```sh
-npm install react --save
-```
-
-**npm** will install package **react-native** in your current folder.
-
-* **--save** flag: By default, **npm** simply installs a package under **node_modules**. When you're trying to install dependencies for your app/module, you would need to first install them, and then add them (along with the appropriate version number) to the **dependencies** section of your **package.json**
-
-```sh
-"dependencies": {
-  "react": "^15.5.4",
-  "react-dom": "^15.5.4"
-},
-```
-
-```sh
-npm install eslint --save-dev
-```
-
-Apart from **dependencies** section in **package.json** there are also **devDependencies** section. In general in **dependencies** are added packages that needed for the app to run while in **devDependencies** those that are needed mostly for development phase. For example **ESLint** is only to assist developer write more consistent code.
-
-```sh
-"devDependencies": {
-  "eslint": "^3.19.0",
-},
-```
-
-* Caret(^) in versioning means that **npm** will install all new **minor** and **patch** versions. So you can end up having installed **ESLint** version 3.20.0 while in **package.json** you will have 3.19.0 which is allowed. Changes on **major** versioning are not allowed.
-
-* Tilde(~) in versioning means that **npm** will install all new **patch** versions. Changes on **major** and **minor** versioning are not allowed.
-
-* In node 5 **--save** flag is a default option
 
 ### List packages
 
-This command will print to stdout all the versions of packages that are installed, as well as their dependencies, in a tree-structure.
+Print to stdout all project packages installed along with their respective versions, including their dependencies in a tree-structure.
 ```sh
 npm list
 ```
 
-This command will print to stdout only the dependancies that are in the first level. This command is usefull to check the **installed version** of the packages versus the one in **package.json**.
+Print to stdout only the dependencies the first level. This command is usefull to check the installed versions of the packages.
 
 ```sh
 npm list --depth=0
 ```
 
-### Run scripts with npm
+### Execute task automation scripts
 
-**npm** supports the "scripts" property of the **package.json** file. Scripts are usefull because they reduce complexity.
+npm supports the execution of scripts for task automation. npm comes with out of the box scripts and also allows developers to create custom ones.
 
-In the follwoing example **npm run deploy** command can be used to deploy app instead of command line **git push dokku@192.168.11.168:carbon-website master -f**
-
-```sh
-"scripts": {
-    "build": "jekyll build",
-    "deploy": "git push dokku@192.168.11.168:carbon-website master -f",
-    "preinstall": "sudo gem install jekyll",
-    "start": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-```
-
-Standard scripts supported by **npm** can be used found [npm scripts](https://docs.npmjs.com/misc/scripts) and run as
+Four [out of the box scripts](https://docs.npmjs.com/misc/scripts) come with project initialization and are executed as shown below:
 
 ```
 npm start
@@ -145,13 +81,13 @@ npm build
 npm install
 ```
 
-Custom scripts run as
+Custom scripts are executed by adding the word `run` before the script name as shown below
 
-<pre>
-npm <b>run</b> deploy
-</pre>
+```sh
+npm run deploy
+```
 
-# Hands on activities
+# Hands on examples
 
 ### Install a node package
 

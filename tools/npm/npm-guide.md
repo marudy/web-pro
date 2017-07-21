@@ -1,4 +1,4 @@
-# Definition
+# Introduction
 
 ### What is npm?
 
@@ -10,13 +10,42 @@ A Node package is a library of code that implements a functionality and develope
 
 ### Where can i get the Node packages from?
 
-Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open source and free developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to understand how useful is a library before using it.
+Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open source and free, developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to understand how useful is a library before using it.
 
 ### Installing npm
 
-npm is installed along with [NodeJS](https://www.nodejs.com/) installation
+npm is installed along with [NodeJS](https://www.nodejs.org/) installation
 
 # package.json
+
+All Node packages contain package.json file in the project root. This file is used to give information to npm that allows it to identify and manage a project. Information is maintained by npm in various metadata relevant to the project.
+
+package.json sample:
+```js
+{
+  "name": "my_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.5.4"
+  },
+  "devDependencies": {}
+}
+```
+
+It contains the list of all dependencies needed for a project to run. When `npm install` runs npm will install all the packages listed in "dependencies" and "devDependencies" section. "devDependencies" section includes packages that needed mostly for development phase.
+
+It also contains the versions of Node packages that a project uses according to [semantic versioning rules](http://semver.org/).
+
+* Caret(^) in versioning means that npm will install all new *minor* and *patch* versions. Changes on *major* versioning are not allowed.
+
+* Tilde(~) in versioning means that npm will install all new *patch* versions. Changes on *major* and *minor* versioning are not allowed.
 
 # Commands
 
@@ -36,10 +65,11 @@ node -v
 
 ### Initialialize project
 
+Starts a process that will create **package.json** file in your current folder. While initializing a questionary command line will be initiated where at least **name** and **version** of the project should be provided.
+
 ```sh
 npm init
 ```
-Starts a process that will create **package.json** file in your current folder. While initializing a questionary command line will be initiated where at least **name** and **version** of the project should be provided.
 
 ### Installation
 
@@ -49,10 +79,16 @@ Install [all project packages](#example-b) as listed in package.json file.
 npm install
 ```
 
-Install single package
+Install single package locally.
 
 ```sh
 npm install <package_name>
+```
+
+Install single package globally. npm will install package `react-native-cli` as a computer program and can be run from any path.
+
+```sh
+npm install <package_name> -g
 ```
 
 ### List packages
@@ -62,7 +98,7 @@ Print to stdout all project packages installed along with their respective versi
 npm list
 ```
 
-Print to stdout only the dependencies the first level. This command is usefull to check the installed versions of the packages.
+Print to stdout only the dependencies of the first level. This command is usefull to check the locally installed versions of the packages.
 
 ```sh
 npm list --depth=0
@@ -91,23 +127,25 @@ npm run deploy
 
 ### Install a node package
 
-Let's say that you want to install package [reqlog](https://www.npmjs.com/package/reqlog) from Registry and use it in your app. Listed below the steps you need in order to include package in your app. In this example it is considered that **npm** is installed your your app.
+As an example, we install package [reqlog](https://www.npmjs.com/package/reqlog) from Registry. Follow the steps below to include package in your app. In this example it is considered that `npm install` already run for your app.
 
 1. Install package
+
+With this command package reqlog is installed under folder node_modules and is added in file package.json.
 
 ```sh
 npm install reqlog
 ```
 
-Package is installed under **node_modules** and is linked in **package.json**
+2. Verify package was installed
 
-2. List the packages installed
+Returns the list of packages with their version in folder node_modules.
 
 ```sh
 npm list
 ```
 
-Returns the list of packages in **reqlog** package. The path represents the dependancies, meaning that **reqlog** **package.json** has as a dependancy **chalk**. Accordingly **chalk** **package.json** has as a dependancy **ansi-styles**, **escape-string-regex** and so forth.
+The tree path represents the dependancies, meaning that reqlog package.json file has as dependancy chalk package. Accordingly chalk package.json file has as dependancy ansi-styles, escape-string-regex packages and so forth.
 
 ```sh
 my-app@1.0.0 C:\my-app
@@ -120,4 +158,21 @@ my-app@1.0.0 C:\my-app
 	+-- strip-ansi@3.0.1
 	| `-- ansi-regex@2.1.1 deduped
 	`-- supports-color@2.0.0
+```
+
+3. Verify package was added in package.json
+
+View package.json file.
+
+```sh
+cat package.json
+```
+
+Package added in "dependencies".
+
+```js
+"dependencies": {
+  "reqlog": "^1.1.3"
+},
+"devDependencies": {},
 ```

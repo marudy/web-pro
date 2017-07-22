@@ -1,22 +1,17 @@
-# Definition
+# Introduction
 
 ### What is nvm?
 
-**nvm** stands for **node version manager** is a tool that allows you to download and install **Node.js** [nvm GitHub](https://github.com/creationix/nvm). 
-
-It supports changing between multiple installed **Node.js** versions.
+**nvm** stands for **Node Version Manager** and is a tool that allows developers to install and manage multiple versions of **Node.js** platform.
 
 # Commands
 
-### Upgrade node version or change version
-
-Check all versions that are installed
+### Check versions installed
 
 ```sh
 nvm ls
 ```
-
-Upgrade to new version or change to an existing version
+### Install a new version
 
 ```sh
 nvm install <node-version>
@@ -24,8 +19,6 @@ nvm install <node-version>
 
 ### Change default version
 
-Change default veresion when open terminal window
-
-```
+```sh
 nvm alias default <node-version>
 ```

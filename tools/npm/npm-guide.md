@@ -2,15 +2,15 @@
 
 ### What is npm?
 
-**npm** stands for **Node Package Manager** and helps developers to install and manage the tools (or packages) in Node.js by providing a useful command line interface.
+**npm** stands for **Node Package Manager** and helps with installation and management of packages in Node.js by providing a useful command line interface.
 
 ### What is a Node package?
 
-A Node package is a library of code that implements a functionality and developers want to import and use within a project.
+A Node package is a library of code that implements a functionality. Naturally, developers want to import and use it within a project instead of re writing it.
 
 ### Where can i get the Node packages from?
 
-Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open source and free, developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to understand how useful is a library before using it.
+Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open and free, developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to decide how useful is a library before using it.
 
 ### Installing npm
 
@@ -18,9 +18,7 @@ npm is installed along with [NodeJS](https://www.nodejs.org/) installation
 
 # package.json
 
-All Node packages contain package.json file in the project root. This file is used to give information to npm that allows it to identify and manage a project. Information is maintained by npm in various metadata relevant to the project.
-
-package.json sample:
+package.json file is created automatically from npm when initializing a project. It holds information for identifying and managing a project. It looks like that:
 ```js
 {
   "name": "my_app",
@@ -35,21 +33,21 @@ package.json sample:
   "dependencies": {
     "react": "^15.5.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^3.19.0",
+   }
 }
 ```
 
-It contains the list of all dependencies needed for a project to run. When `npm install` runs npm will install all the packages listed in "dependencies" and "devDependencies" section. "devDependencies" section includes packages that needed mostly for development phase.
+It holds the list of all dependencies and devDependencies packages. Dependencies are the modules needed to be installed for a project to run while devDependencies are the modules used by the developer to make his life easier. 
 
-It also contains the versions of Node packages that a project uses according to [semantic versioning rules](http://semver.org/).
+Versions of Node packages in package.json file follow the [semantic versioning rules](http://semver.org/). They can also contain the caret(^) or tilde(~) character in front of them. Caret instructs npm to install up to the latest available minor version, while tilde up to the latest available patch version.
 
-* Caret(^) in versioning means that npm will install all new *minor* and *patch* versions. Changes on *major* versioning are not allowed.
-
-* Tilde(~) in versioning means that npm will install all new *patch* versions. Changes on *major* and *minor* versioning are not allowed.
+When `npm install` runs all packages are installed from both "dependencies" and "devDependencies" sections.
 
 # Commands
 
-### Check tool version
+### Check version
 
 **npm** version
 
@@ -73,7 +71,7 @@ npm init
 
 ### Installation
 
-Install [all project packages](#example-b) as listed in package.json file.
+Install [all project packages](#example-b) as listed in package.json file locally.
 
 ```sh
 npm install
@@ -85,7 +83,7 @@ Install single package locally.
 npm install <package_name>
 ```
 
-Install single package globally. npm will install package `react-native-cli` as a computer program and can be run from any path.
+Install single package globally. That bein said, packages installed that way be run from any path.
 
 ```sh
 npm install <package_name> -g
@@ -94,11 +92,12 @@ npm install <package_name> -g
 ### List packages
 
 Print to stdout all project packages installed along with their respective versions, including their dependencies in a tree-structure.
+
 ```sh
 npm list
 ```
 
-Print to stdout only the dependencies of the first level. This command is usefull to check the locally installed versions of the packages.
+Print to stdout only the dependencies of the first level. This command is usefull to check the versions of the packages installed locally.
 
 ```sh
 npm list --depth=0
@@ -127,11 +126,11 @@ npm run deploy
 
 ### Install a node package
 
-As an example, we install package [reqlog](https://www.npmjs.com/package/reqlog) from Registry. Follow the steps below to include package in your app. In this example it is considered that `npm install` already run for your app.
+As an example, we will install package [reqlog](https://www.npmjs.com/package/reqlog) from npm Registry. Follow the steps below to setup the package in your app.
 
 1. Install package
 
-With this command package reqlog is installed under folder node_modules and is added in file package.json.
+Package reqlog will be installed installed under node_modules folder and its reference will de added in package.json.
 
 ```sh
 npm install reqlog
@@ -145,7 +144,7 @@ Returns the list of packages with their version in folder node_modules.
 npm list
 ```
 
-The tree path represents the dependancies, meaning that reqlog package.json file has as dependancy chalk package. Accordingly chalk package.json file has as dependancy ansi-styles, escape-string-regex packages and so forth.
+Output should look like this:
 
 ```sh
 my-app@1.0.0 C:\my-app
@@ -168,7 +167,7 @@ View package.json file.
 cat package.json
 ```
 
-Package added in "dependencies".
+Output should look like this:
 
 ```js
 "dependencies": {

@@ -14,7 +14,13 @@ Users open source and publish their packages in [npm Registry](https://www.npmjs
 
 ### Installing npm
 
-npm is installed along with [NodeJS](https://www.nodejs.org/) installation
+npm is installed along with [NodeJS](https://nodejs.org/en/download/) installation. This link provides NodeJS binaries and installers.
+
+Alternatively for linux users run the following command from terminal replacing the node version `setup_8.x`. This example is for node version 8.
+```sh
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
 
 # package.json
 
@@ -71,7 +77,7 @@ npm init
 
 ### Installation
 
-Install [all project packages](#example-b) as listed in package.json file locally.
+Install all project packages as listed in package.json file locally.
 
 ```sh
 npm install

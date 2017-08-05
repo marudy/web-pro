@@ -10,7 +10,9 @@ A Node package is a library of code that implements a functionality. Naturally, 
 
 ### Where can i get the Node packages from?
 
-Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). Since these packages are open and free, developers usually check README, stats and stars of each package in [GitHub](https://www.github.com) in order to decide how useful is a library before using it.
+Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). 
+
+Since these packages are open and free, developers usually check Stats at the right of the web page of npm Registry, for example [reqlog](https://www.npmjs.com/package/reqlog). There is displayed the number of installments along with the GitHub link which provides the stars and README of each package in order to decide how useful is a library before using it.
 
 ### Installing npm
 
@@ -24,7 +26,7 @@ sudo apt-get install -y nodejs
 
 # package.json
 
-package.json file is created automatically from npm when initializing a project. It holds information for identifying and managing a project. It looks like that:
+[package.json](https://docs.npmjs.com/files/package.json) file is created automatically from npm when initializing a project. It holds information for identifying and managing a project. It looks like that:
 ```js
 {
   "name": "my_app",
@@ -45,7 +47,7 @@ package.json file is created automatically from npm when initializing a project.
 }
 ```
 
-It holds the list of all dependencies and devDependencies packages. Dependencies are the modules needed to be installed for a project to run while devDependencies are the modules used by the developer to make his life easier. 
+It holds the list of all [dependencies](https://docs.npmjs.com/files/package.json#dependencies) and [devDependencies](https://docs.npmjs.com/files/package.json#devdependencies) packages. Dependencies are the modules needed to be installed for a project to run while devDependencies are the modules used by the developer to make his life easier. 
 
 Versions of Node packages in package.json file follow the [semantic versioning rules](http://semver.org/). They can also contain the caret(^) or tilde(~) character in front of them. Caret instructs npm to install up to the latest available minor version, while tilde up to the latest available patch version.
 
@@ -89,7 +91,7 @@ Install single package locally.
 npm install <package_name>
 ```
 
-Install single package globally. That bein said, packages installed that way be run from any path.
+Install single package globally. That being said, packages installed to run from any path. [Global package](https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/) are important, but should be avoided if not needed. Only utils packages should be installed globally.
 
 ```sh
 npm install <package_name> -g
@@ -103,7 +105,7 @@ Print to stdout all project packages installed along with their respective versi
 npm list
 ```
 
-Print to stdout only the dependencies of the first level. This command is usefull to check the versions of the packages installed locally.
+Print to stdout only the dependencies of the first level of the tree-structure. This command is usefull to check the actual version of the packages installed locally in relation to the versions existing in package.json.
 
 ```sh
 npm list --depth=0

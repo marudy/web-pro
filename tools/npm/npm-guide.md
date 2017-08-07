@@ -2,7 +2,7 @@
 
 ### What is npm?
 
-**npm** stands for **Node Package Manager** and helps with installation and management of packages in Node.js by providing a useful command line interface.
+[npm](https://docs.npmjs.com/getting-started/what-is-npm) stands for **Node Package Manager** and helps with installation and management of packages in [Node.js](https://nodejs.org/en/) by providing a useful command line interface.
 
 ### What is a Node package?
 
@@ -10,13 +10,13 @@ A Node package is a library of code that implements a functionality. Naturally, 
 
 ### Where can i get the Node packages from?
 
-Users open source and publish their packages in [npm Registry](https://www.npmjs.com/search). 
+Developers open source and publish their packages in [npm Registry](https://www.npmjs.com/search). 
 
-Since these packages are open and free, developers usually check Stats at the right of the web page of npm Registry, for example [reqlog](https://www.npmjs.com/package/reqlog). There is displayed the number of installments along with the GitHub link which provides the stars and README of each package in order to decide how useful is a library before using it.
+Since these packages are open and free, users are recommended to consult the Stats at the right of the web page of npm Registry for a package. For example see Stats of [lodash](https://www.npmjs.com/package/lodash) package. There is displayed the number of installments along with the GitHub link which provides the stars and README of each package in order to decide how useful is a library before using it.
 
 ### Installing npm
 
-npm is installed along with [NodeJS](https://nodejs.org/en/download/) installation. This link provides NodeJS binaries and installers.
+npm is installed along with [Node.js](https://nodejs.org/en/download/) installation. This link provides Node.js binaries and installers.
 
 Alternatively for linux users run the following command from terminal replacing the node version `setup_8.x`. This example is for node version 8.
 ```sh
@@ -49,7 +49,7 @@ sudo apt-get install -y nodejs
 
 It holds the list of all [dependencies](https://docs.npmjs.com/files/package.json#dependencies) and [devDependencies](https://docs.npmjs.com/files/package.json#devdependencies) packages. Dependencies are the modules needed to be installed for a project to run while devDependencies are the modules used by the developer to make his life easier. 
 
-Versions of Node packages in package.json file follow the [semantic versioning rules](http://semver.org/). They can also contain the caret(^) or tilde(~) character in front of them. Caret instructs npm to install up to the latest available minor version, while tilde up to the latest available patch version.
+Versions of Node packages in package.json file follow the [semantic versioning rules](http://semver.org/). They can also contain the caret(^) or tilde(~) character in front of them. [Caret](https://docs.npmjs.com/misc/semver#caret-ranges-123-025-004) instructs npm to install up to the latest available minor version, while [tilde](https://docs.npmjs.com/misc/semver#tilde-ranges-123-12-1) up to the latest available patch version.
 
 When `npm install` runs all packages are installed from both "dependencies" and "devDependencies" sections.
 
@@ -69,6 +69,8 @@ npm -v
 node -v
 ```
 
+For more details check npm documentation for [npm-version](https://docs.npmjs.com/cli/version)
+
 ### Initialialize project
 
 Starts a process that will create **package.json** file in your current folder. While initializing a questionary command line will be initiated where at least **name** and **version** of the project should be provided.
@@ -76,6 +78,8 @@ Starts a process that will create **package.json** file in your current folder. 
 ```sh
 npm init
 ```
+
+For more details check npm documentation for [npm-init](https://docs.npmjs.com/cli/init)
 
 ### Installation
 
@@ -85,10 +89,16 @@ Install all project packages as listed in package.json file locally.
 npm install
 ```
 
-Install single package locally.
+Install single package locally. From Node.js version 5 `--save` flag is a default option so no need to provide.
 
 ```sh
 npm install <package_name>
+```
+
+Install package in devDependencies.
+
+```sh
+npm install <package_name> --save-dev
 ```
 
 Install single package globally. That being said, packages installed to run from any path. [Global package](https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/) are important, but should be avoided if not needed. Only utils packages should be installed globally.
@@ -96,6 +106,14 @@ Install single package globally. That being said, packages installed to run from
 ```sh
 npm install <package_name> -g
 ```
+
+Install package specific version. For example, `npm install reqlog@1.1.2`
+
+```sh
+npm install <package_name>@<package_version>
+```
+
+For more details check npm documentation for [npm-install](https://docs.npmjs.com/cli/install)
 
 ### List packages
 
@@ -110,6 +128,8 @@ Print to stdout only the dependencies of the first level of the tree-structure. 
 ```sh
 npm list --depth=0
 ```
+
+For more details check npm documentation for [npm-ls](https://docs.npmjs.com/cli/ls)
 
 ### Execute task automation scripts
 

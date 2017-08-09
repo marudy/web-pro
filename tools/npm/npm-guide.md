@@ -16,12 +16,10 @@ Since these packages are open and free, users are recommended to consult the Sta
 
 ### Installing npm
 
-npm is installed along with [Node.js](https://nodejs.org/en/download/) installation. This link provides Node.js binaries and installers.
+npm is installed along with [Node.js](https://nodejs.org/en/download/) installation. Use [nvm](https://github.com/marudy/web-pro/blob/web-pro-npm/tools/nvm/nvm-guide.md#install-a-new-version) to install Node.js.
 
-Alternatively for linux users run the following command from terminal replacing the node version `setup_8.x`. This example is for node version 8.
 ```sh
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
+nvm install <node-version>
 ```
 
 # package.json
